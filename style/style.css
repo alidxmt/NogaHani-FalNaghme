@@ -1,0 +1,35 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+#main-div {
+    height: 100%;
+    background: rgb(255, 255, 255);
+}
+#main-svg {
+    width: 100%;
+    height: 100%;
+}
+
+#navaboard-rect {
+  
+  width: 100%;
+  height: 100%;
+  fill:rgb(69, 92, 5)
+}
+
+
+.class-btn-start {
+  border-radius: 35px;
+  border: none;
+  width: 80px;
+  height: 42px;
+}
+
+.class-inp-start {
+  border-radius: 35px;
+  border: dimgray;
+  border-width: 4px;
+  width: 80px;
+  height: 42px;
+}
