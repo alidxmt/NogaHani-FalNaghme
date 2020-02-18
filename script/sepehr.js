@@ -68,6 +68,46 @@ class Navasaz {
        }, LNavaNote.time);
     }
 }
+class drawNote {
+    constructor (NavaArraytoDraw) {
+        this._data = NavaArraytoDraw;
+    }
+    static info() {
+        return 'it draws circle on the NavaBoard and it show the place of the note on board'
+    }
+    draw() {
+
+        for (let index = 0; index < this._data.length; index++) {
+            
+            this.oneCircle(this._data[index]);       
+
+        }
+
+
+    }
+    oneCircle(LNavaNote) {
+
+        setTimeout(function() {
+            console.log(LNavaNote.frequency,LNavaNote.amplitude)
+            NAVABOARD_BASE.append('circle')
+                .attr('cx',LNavaNote.frequency)
+                .attr('cy',1000*LNavaNote.amplitude)
+                .attr('fill','rgb('+73+','+80+','+100+')')
+                .attr('r',0)
+                .transition()
+                .attr('fill','rgb('+173+','+180+','+200+')')
+                .attr('r',10)
+                .duration(400)
+                .attr('opacity',1)
+                .transition()
+                .attr('fill','rgb('+73+','+80+','+100+')')
+                .attr('r',0)
+                .attr('opacity',.04)
+                .duration(3000)
+        }, LNavaNote.time);
+
+    }
+}
 
 class NavaNote {
     constructor() {
@@ -116,13 +156,13 @@ class Naghme {
 
 
 var Maraghei = [100,94.9,91.8,88.9,84.4,81.6,79.0,75.0,71.2,68.9,66.7,63.3,61.2,59.3,56.3,54.4,52.7,50.0,45.9,44.4,42.2,40.8,39.5,37.5,35.6,33.3,31.6]
-var Maraghei2 = [100,91.8,,84.4,75.0,66.7,100,91.8,,84.4,75.0,66.7]
+var Maraghei2 = [100,91.8,,84.4,75.0,100,91.8,84.4,75.0,66.7,100,91.8,84.4,75,66.7,66.7,100,91.8,,84.4,75,66.7]
 
 
 var NaghmeFal = [];
 for (let index = 0; index < 8; index++) {
     let NoteToPlay = new NavaNote;
-    NoteToPlay.frequency = ((40000/Maraghei[parseInt((Math.random()*17))])).toFixed(0);
+    NoteToPlay.frequency = ((40000/Maraghei2[parseInt((Math.random()*17))])).toFixed(0);
     NoteToPlay.shape = 'sine';
     NoteToPlay.amplitude = Math.random();
     NoteToPlay.duration = 1;
@@ -141,4 +181,6 @@ function BeNavaz() {
         newNava.getData(NaghmeFal);
         console.log(newNava);
         newNava.play_naghme();
+        dNoteNava = new drawNote(NaghmeFal);
+        dNoteNava.draw()
 }
